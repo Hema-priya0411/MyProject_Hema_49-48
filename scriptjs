@@ -1,0 +1,59 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Handle smooth scrolling when navigation links are clicked
+    const links = document.querySelectorAll('.nav__links a');
+    links.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  
+    // Handle "Home" click (scroll to the top of the page)
+    document.getElementById("home").addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default behavior (if any)
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top of the page
+    });
+  
+    // Handle "About Us" click (scroll to the About Us section smoothly)
+    document.getElementById("about-us").addEventListener("click", function (event) {
+      event.preventDefault();
+      document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+    });
+  
+    // Handle "Services" click (scroll to the Services section smoothly)
+    document.getElementById("services").addEventListener("click", function (event) {
+      event.preventDefault();
+      document.getElementById("services").scrollIntoView({ behavior: "smooth" });
+    });
+  
+    // Handle "Contact Us" click (show contact form alert for now)
+    document.getElementById("contact-us").addEventListener("click", function (event) {
+      event.preventDefault();
+      alert("Contact form is under development. Please check back soon!");
+    });
+  
+    // Handle the "See Services" button click
+    const seeServicesBtn = document.getElementById("see-services-btn");
+    seeServicesBtn.addEventListener("click", function () {
+      document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
+    });
+  
+    // Handle appointment form submission and show popup message
+    const appointmentForm = document.getElementById("appointment-form");
+    appointmentForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      // Show popup message
+      const popupMessage = document.getElementById("popup-message");
+      popupMessage.style.display = "flex";
+  
+      // Close popup when button is clicked
+      const closePopup = document.getElementById("close-popup");
+      closePopup.addEventListener("click", function () {
+        popupMessage.style.display = "none";
+      });
+    });
+  });
+  
